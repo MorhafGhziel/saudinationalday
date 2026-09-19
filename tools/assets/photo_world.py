@@ -12,7 +12,7 @@ only ever shifts by a few pixels, so it reads as depth without showing seams.
 
     uv run --python 3.12 --with pillow --with numpy --with scipy python tools/assets/photo_world.py
 """
-import json, os, urllib.request
+import json, os, time, urllib.error, urllib.request
 import numpy as np
 from PIL import Image, ImageEnhance
 from scipy.ndimage import gaussian_filter, binary_opening, binary_closing
@@ -25,6 +25,10 @@ cands = json.load(open(os.path.join(src, "candidates.json"), encoding="utf8"))
 WORLDS = {
     "najd": {"pick": "najd-08.jpg", "land_y": 0.30, "port_x": 0.66, "depth": ("vanish", 0.665, 0.50), "warm": 1.04},
     "alula": {"pick": "alula-01.jpg", "land_y": 0.55, "port_x": 0.54, "depth": ("horizon", 0.74), "warm": 1.02},
+    "jeddah": {"pick": "jeddah-06.jpg", "land_y": 0.30, "port_x": 0.50, "depth": ("horizon", 0.12), "warm": 1.02},
+    "makkah": {"pick": "makkah-04.jpg", "land_y": 0.40, "port_x": 0.50, "depth": ("horizon", 0.55), "warm": 1.02},
+    "madinah": {"pick": "madinah-08.jpg", "land_y": 0.0, "port_x": 0.42, "depth": ("horizon", 0.50), "warm": 1.0},
+    "sharqiyah": {"pick": "sharqiyah-04.jpg", "land_y": 0.50, "port_x": 0.62, "depth": ("horizon", 0.50), "warm": 1.0},
     "aseer": {"pick": "aseer-02.jpg", "land_y": 0.18, "port_x": 0.50, "depth": ("horizon", 0.30), "warm": 1.0},
 }
 
@@ -33,7 +37,14 @@ def fetch(c):
     dest = os.path.join(src, "full-" + c["preview"])
     if not os.path.exists(dest):
         req = urllib.request.Request(c["url"], headers={"User-Agent": "hekayatna-national-day/1.0 (independent studio project)"})
-        open(dest, "wb").write(urllib.request.urlopen(req).read())
+        for attempt in range(6):                       # be a polite client: wait between files, back off when asked to
+            time.sleep(6 + attempt * 20)
+            try:
+                blob = urllib.request.urlopen(req).read()   # read fully first, so a failed download never leaves an empty file behind
+                open(dest, "wb").write(blob); break
+            except urllib.error.HTTPError as e:
+                if e.code != 429 or attempt == 5: raise
+                print("  rate limited, waiting", flush=True)
     return Image.open(dest).convert("RGB")
 
 

@@ -9,6 +9,10 @@ import { fileURLToPath } from "node:url";
 const OUT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "assets-src", "commons");
 const UA = { "User-Agent": "hekayatna-national-day/1.0 (independent studio project; photo research)" };
 const QUERIES = {
+  jeddah: ["Al-Balad Jeddah", "Jeddah historic district", "Jeddah corniche", "Jeddah old town"],
+  makkah: ["Mecca skyline", "Jabal al-Nour Mecca", "Makkah mountains", "Mecca city view"],
+  madinah: ["Medina Saudi Arabia skyline", "Mount Uhud Medina", "Quba Mosque", "Medina city view"],
+  sharqiyah: ["Al-Ahsa oasis", "Khobar corniche", "Dammam corniche", "Al-Hasa palm"],
   najd: ["At-Turaif Diriyah", "Diriyah mud brick", "Ushaiqer heritage village", "Najd traditional architecture Saudi"],
   aseer: ["Rijal Almaa", "Al Soudah Abha mountains", "Asir mountains Saudi Arabia", "Abha landscape"],
   alula: ["Elephant Rock Al-Ula", "Hegra Saudi Arabia", "Al-Ula sandstone", "Mada'in Salih", "AlUla old town"],
@@ -27,10 +31,10 @@ async function api(u) {
 const strip = (s = "") => s.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
 
 fs.mkdirSync(OUT, { recursive: true });
-const ONLY = process.argv[2];                         // e.g. "alula": search one place and keep the others as they are
+const ONLY = process.argv[2]?.split(",");                         // e.g. "alula": search one place and keep the others as they are
 const all = ONLY && fs.existsSync(path.join(OUT, "candidates.json")) ? JSON.parse(fs.readFileSync(path.join(OUT, "candidates.json"), "utf8")) : {};
 for (const [place, queries] of Object.entries(QUERIES)) {
-  if (ONLY && place !== ONLY) continue;
+  if (ONLY && !ONLY.includes(place)) continue;
   const seen = new Map();
   for (const q of queries) {
     const u = "https://commons.wikimedia.org/w/api.php?" + new URLSearchParams({ action: "query", format: "json", generator: "search", gsrsearch: q, gsrnamespace: "6", gsrlimit: "30", prop: "imageinfo", iiprop: "url|size|extmetadata", iiurlwidth: "560" });
