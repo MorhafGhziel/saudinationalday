@@ -18,6 +18,10 @@ Found with `tools/assets/commons.mjs` (licence-filtered search), processed by `t
 |---|---|---|---|
 | najd | [At-Turaif District in ad-Dir'iyah (3).jpg](https://commons.wikimedia.org/wiki/File:At-Turaif_District_in_ad-Dir%27iyah_(3).jpg) | Radosław Botev | CC BY 3.0 pl |
 | alula | [Elephant Rock 2020.jpg](https://commons.wikimedia.org/wiki/File:Elephant_Rock_2020.jpg) | Richard Mortel | CC BY 2.0 |
+| jeddah | [Old Jeddah - 55362178648.jpg](https://commons.wikimedia.org/wiki/File:Old_Jeddah_-_55362178648.jpg) | xiquinhosilva | CC BY 4.0 |
+| makkah | [HAC 2010 MEKKE NUR DAGINA BAKIS - panoramio (1).jpg](https://commons.wikimedia.org/wiki/File:HAC_2010_MEKKE_NUR_DAGINA_BAKIS_-_panoramio_(1).jpg) | Selami Akceylan | CC BY 3.0 |
+| madinah | [Mount Uhud, Medina, 20241002 091239 125.jpg](https://commons.wikimedia.org/wiki/File:Mount_Uhud,_Medina,_20241002_091239_125.jpg) | Ahmed | CC BY 4.0 |
+| sharqiyah | [Dammam Corniche (2).jpg](https://commons.wikimedia.org/wiki/File:Dammam_Corniche_(2).jpg) | Radosław Botev | CC BY 3.0 pl |
 | aseer | [Sarawat Mountains, Asir Region, Saudi Arabia (9).jpg](https://commons.wikimedia.org/wiki/File:Sarawat_Mountains,_Asir_Region,_Saudi_Arabia_(9).jpg) | Richard Mortel | CC BY 2.0 |
 
 CC BY asks for credit and a note of changes, both given above and on the site. None of these photographers is affiliated with or endorses this project.

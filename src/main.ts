@@ -74,7 +74,7 @@ function select() {
   places.forEach((p) => p.ready && stage.preload(world(p.id)));
   const a = aspect();
   const el = scene(`<h2 class="ask">${copy.ask}</h2>
-    <div role="radiogroup" aria-label="${copy.ask}">${places.map((p) => `<button class="spot" type="button" role="radio" aria-checked="${p.id === place.id}" data-id="${p.id}" style="right:${(1 - p.anchor[a][0]) * 100}%;top:${p.anchor[a][1] * 100}%"><b>${p.name}</b><small>${p.ready ? p.region : copy.soon}</small></button>`).join("")}</div>
+    <div class="spots" role="radiogroup" aria-label="${copy.ask}">${places.map((p) => `<button class="spot" type="button" role="radio" aria-checked="${p.id === place.id}" data-id="${p.id}"><b>${p.name}</b><small>${p.ready ? p.region : copy.soon}</small></button>`).join("")}</div>
     <div class="dock"><p class="line" id="line">${place.line}</p><p class="idx" id="idx"></p><button class="btn" type="button" id="in">${copy.enter}</button></div>`);
   const spots = [...el.querySelectorAll<HTMLButtonElement>(".spot")];
   const pick = (id: string, focus = false) => {

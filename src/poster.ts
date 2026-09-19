@@ -49,7 +49,7 @@ export async function drawPoster(canvas: HTMLCanvasElement, place: Place, value:
     ctx.strokeStyle = "rgba(244,234,216,0.35)"; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(cx - 120, y); ctx.lineTo(cx + 120, y); ctx.stroke();
   }
   // place
-  ctx.fillStyle = ivory; ctx.font = '700 196px "Aref Ruqaa"'; ctx.fillText(place.name, cx, h - 400);
+  ctx.fillStyle = ivory; fitText(ctx, place.name, (px) => `700 ${px}px "Aref Ruqaa"`, w - 150, 196, 110); ctx.fillText(place.name, cx, h - 400);
   // value line
   ctx.fillStyle = amber; fitText(ctx, posterLine(value), (px) => `400 ${px}px "Aref Ruqaa"`, w - 220, 104, 60); ctx.fillText(posterLine(value), cx, h - 262);
   // project name and credit, small
