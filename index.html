@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>حكايتنا واحدة · تجربة من SIMA لليوم الوطني السعودي ٩٦</title>
+    <meta name="description" content="ادخل عالماً مستلهماً من أرض السعودية، اختر المكان الأقرب لك، واصنع لوحتك لليوم الوطني. مشروع إبداعي مستقل من استوديو سِمة." />
+    <meta name="theme-color" content="#120c08" />
+    <meta property="og:title" content="حكايتنا واحدة" />
+    <meta property="og:description" content="من وين تبدأ حكايتك؟ تجربة من SIMA لليوم الوطني السعودي ٩٦." />
+    <meta property="og:image" content="/og.jpg" />
+    <link rel="preload" href="/fonts/aref-ruqaa-arabic-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/tajawal-arabic-500-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <canvas id="stage" aria-hidden="true"></canvas>
+    <div id="still" aria-hidden="true"></div>
+    <video id="walk" muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+    <div id="veil" aria-hidden="true"></div>
+
+    <header class="bar">
+      <a class="mark" href="https://www.simastudio.it.com" target="_blank" rel="noreferrer" aria-label="استوديو سِمة">SIMA</a>
+      <div class="tools">
+        <button id="back" class="tool" type="button" hidden>رجوع</button>
+        <button id="sound" class="tool" type="button" aria-pressed="false">الصوت: مغلق</button>
+        <button id="skip" class="tool" type="button" aria-pressed="false">تخطي الحركة</button>
+        <button id="info" class="tool" type="button" aria-expanded="false" aria-controls="about">عن التجربة</button>
+      </div>
+    </header>
+
+    <main id="ui" aria-live="polite"></main>
+
+    <aside id="about" hidden>
+      <p id="about-text"></p>
+      <p class="fine">المشاهد معمولة ببرنامج Blender من أصول مفتوحة الترخيص (CC0) من Poly Haven. الخطوط: Aref Ruqaa وTajawal (رخصة OFL). لا نجمع أي بيانات: اسمك يبقى في متصفحك فقط.</p>
+    </aside>
+
+    <p id="loading" role="status">…نفتح الطريق</p>
+    <noscript><p class="noscript">هذه التجربة تحتاج JavaScript.</p></noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
