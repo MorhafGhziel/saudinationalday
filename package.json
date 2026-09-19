@@ -1,0 +1,22 @@
+{
+  "name": "hekayatna",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3900",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --port 3900",
+    "assets": "node tools/assets/fetch.mjs"
+  },
+  "dependencies": {
+    "@fontsource/aref-ruqaa": "^5.3.0",
+    "@fontsource/tajawal": "^5.3.0",
+    "three": "^0.186.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.186.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0"
+  }
+}
