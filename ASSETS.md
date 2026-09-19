@@ -11,6 +11,17 @@ Downloaded by `tools/assets/fetch.mjs` into `assets-src/` (git-ignored, about 25
 | Textures (2K) | `sandstone_cracks`, `red_sandstone_wall`, `sand_01` (used); `worn_rock_natural_01`, `red_sand`, `sand_03`, `rock_wall_08`, `clay_plaster`, `patterned_clay_plaster`, `dry_ground_rocks`, `rocky_terrain_02` (for the unfinished places) |
 | Skies (4K HDRI) | `qwantani_late_afternoon_puresky` (used); `kloppenheim_06_puresky`, `kloofendal_48d_partly_cloudy_puresky`, `kloofendal_28d_misty_puresky` |
 
+## Photographs · Wikimedia Commons (https://commons.wikimedia.org)
+Found with `tools/assets/commons.mjs` (licence-filtered search), processed by `tools/assets/photo_world.py`. Changes made: cropped to 16:9 and 9:16, resized, mild contrast and colour grade. Credit is shown inside each place, in the info panel and on the exported poster.
+
+| Place | File | Photographer | Licence |
+|---|---|---|---|
+| najd | [At-Turaif District in ad-Dir'iyah (3).jpg](https://commons.wikimedia.org/wiki/File:At-Turaif_District_in_ad-Dir%27iyah_(3).jpg) | Radosław Botev | CC BY 3.0 pl |
+| alula | [Elephant Rock 2020.jpg](https://commons.wikimedia.org/wiki/File:Elephant_Rock_2020.jpg) | Richard Mortel | CC BY 2.0 |
+| aseer | [Sarawat Mountains, Asir Region, Saudi Arabia (9).jpg](https://commons.wikimedia.org/wiki/File:Sarawat_Mountains,_Asir_Region,_Saudi_Arabia_(9).jpg) | Richard Mortel | CC BY 2.0 |
+
+CC BY asks for credit and a note of changes, both given above and on the site. None of these photographers is affiliated with or endorses this project.
+
 ## Made for this project (original, by script)
 Rock passage, sandstone masses, dunes, date palms and fronds, haze, lighting, camera moves: `tools/blender/*.py`. Dust, birds, mist, grading: `src/stage.ts`. Ambient sound: synthesised in `src/sound.ts` (no recordings, no music).
 

@@ -97,7 +97,8 @@ function select() {
 
 /* ------------------------------------------------------------------ travel: the air fills with mist, the place changes inside it, the mist clears */
 async function travel(to: View, then: () => void) {
-  if (busy) return; busy = true;
+  while (busy) await wait(100);            // a tap during a transition is kept, not lost: it runs as soon as the air clears
+  busy = true;
   ui.querySelector(".scene")?.classList.remove("on");
   stage.setMist(place.mist); sound.swell(3);
   await stage.tween("uMist", 1, skipMotion ? 250 : 1500); await show(to); await wait(skipMotion ? 0 : 250); then(); await stage.tween("uMist", 0, skipMotion ? 250 : 1900);
@@ -107,8 +108,8 @@ async function travel(to: View, then: () => void) {
 /* ------------------------------------------------------------------ 3. inside the place */
 function arrive() {
   state = "place"; $("#back").hidden = false;
-  const a = aspect(); stage.setFocus(a === "port" ? 0.5 : 0.42, 0.45);
-  const el = scene(`<div class="arrive"><h2>${place.name}</h2><p>${place.line}</p><p class="look">مرّر أو استخدم الأسهم لتقترب من التفاصيل</p></div>
+  const a = aspect(); stage.setFocus(place.focus[a][0], place.focus[a][1]);
+  const el = scene(`<div class="arrive"><h2>${place.name}</h2><p>${place.line}</p><p class="look">مرّر أو استخدم الأسهم لتقترب من التفاصيل</p><p class="photo-credit">${place.credit.href ? `<a href="${place.credit.href}" target="_blank" rel="noreferrer">${place.credit.short}</a>` : place.credit.short}</p></div>
     <form class="form" id="f" novalidate>
       <fieldset><legend>${copy.word}</legend><div class="chips">${values.map((v) => `<label class="chip"><input type="radio" name="v" value="${v}" ${v === value ? "checked" : ""}><span>${v}</span></label>`).join("")}</div></fieldset>
       <label class="sr" for="n" style="position:absolute;clip:rect(0 0 0 0);width:1px;height:1px;overflow:hidden">${copy.name}</label>
@@ -158,6 +159,7 @@ $("#sound").addEventListener("click", async (e) => { const on = await sound.togg
 $("#skip").addEventListener("click", (e) => { skipMotion = !skipMotion; stage.reduced = skipMotion; if (!skipMotion) void stage.tween("uLife", 1, 300); (e.currentTarget as HTMLElement).setAttribute("aria-pressed", String(skipMotion)); });
 $("#skip").setAttribute("aria-pressed", String(skipMotion));
 $("#about-text").textContent = copy.independent;
+$("#about-credits").innerHTML = places.map((p) => `<li><b>${p.name}:</b> ${p.credit.full}</li>`).join("");
 $("#info").addEventListener("click", (e) => { const p = $("#about"); p.hidden = !p.hidden; (e.currentTarget as HTMLElement).setAttribute("aria-expanded", String(!p.hidden)); });
 addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#about").hidden) { $("#about").hidden = true; $("#info").setAttribute("aria-expanded", "false"); $("#info").focus(); } });
 let lastAspect = aspect();

@@ -77,6 +77,10 @@ button { cursor: pointer; background: none; border: 0; }
 .arrive h2 { font: 700 clamp(3rem, 6vw, 6rem)/1.1 "Aref Ruqaa", serif; }
 .arrive p { margin-top: 0.6rem; font-size: 1.05rem; opacity: 0.9; }
 .arrive .look { margin-top: 1.2rem; font-size: 0.78rem; opacity: 0.6; }
+.arrive .photo-credit { margin-top: 0.5rem; font-size: 0.7rem; opacity: 0.6; direction: rtl; }
+.arrive .photo-credit a { color: inherit; }
+#about-credits { margin-top: 0.7rem; padding: 0; list-style: none; display: grid; gap: 0.4rem; }
+#about-credits b { font-weight: 700; }
 .form { position: absolute; inset-inline: var(--pad); bottom: calc(var(--bottom) + 0.5rem); display: grid; justify-items: center; gap: 1rem; }
 .form legend, .form .q { font: 400 clamp(1.5rem, 2.6vw, 2.2rem)/1.3 "Aref Ruqaa", serif; text-align: center; padding: 0; }
 .form fieldset { border: 0; display: grid; justify-items: center; gap: 0.9rem; }

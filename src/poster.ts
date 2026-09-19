@@ -55,6 +55,8 @@ export async function drawPoster(canvas: HTMLCanvasElement, place: Place, value:
   // project name and credit, small
   ctx.fillStyle = "rgba(244,234,216,0.82)"; ctx.font = '500 34px "Tajawal"'; ctx.fillText(copy.title, cx, h - 150);
   ctx.fillStyle = "rgba(244,234,216,0.55)"; ctx.font = '400 26px "Tajawal"'; ctx.fillText(copy.credit, cx, h - 96);
+  // photographs carry their credit wherever the poster travels, as CC BY asks
+  ctx.fillStyle = "rgba(244,234,216,0.42)"; ctx.font = '400 19px "Tajawal"'; ctx.fillText(place.credit.short, cx, h - 52);
 }
 
 export const toBlob = (c: HTMLCanvasElement) => new Promise<Blob>((ok, no) => c.toBlob((b) => (b ? ok(b) : no(new Error("export failed"))), "image/png"));

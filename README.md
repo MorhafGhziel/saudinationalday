@@ -14,7 +14,7 @@ npm run build      # type-check + production build into dist/
 
 Threshold (title, one button) → a rendered walk out through the rock (video) → choose a place standing in the landscape → mist carries you into it → pick one word and an optional name → a 1080 × 1920 poster to download or share. No account, no form data leaves the browser.
 
-**Status of the places (honest):** AlUla is finished. **Najd and Aseer are shown as «قريباً» and cannot be entered**: their scenes (`tools/blender/destination.py`) were built twice and still looked like simple blocks and toy hills, so they were held back instead of shipped. Turning one on is `ready: true` in `src/data.ts` once its renders exist in `public/worlds/<id>/`.
+**The places:** all three can be entered. **Najd, AlUla and Aseer are real photographs** (At-Turaif in Diriyah, Elephant Rock, the Sarawat mountains) from Wikimedia Commons under CC BY licences, credited on screen, in the info panel and on every poster. `tools/assets/photo_world.py` crops and grades them and estimates a depth map from each picture (sky found by colour, ground receding to the horizon or to a lane's vanishing point), so they get the same parallax, mist and poster treatment as a render. Two earlier attempts to build Najd and Aseer as 3D scenes looked like blocks and toy hills and were dropped; their scripts remain in `tools/blender/destination.py` for reference only. The opening world is still a Blender render. Adding a place = one entry in `src/data.ts`, one in `photo_world.py`.
 
 ## How it is made, and why it runs on weak devices
 
